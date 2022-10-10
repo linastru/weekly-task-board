@@ -1,0 +1,259 @@
+html {
+  box-sizing: border-box;
+  position: relative;
+}
+
+body {
+  margin: 0;
+  padding: 5px;
+  background-color: #dadada;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+/* ---------------------------------------- */
+.column-container {
+  min-height: 95vh;
+  display: flex;
+  white-space: nowrap;
+  margin: 10px;
+}
+
+/* ---------------------------------------- */
+.task-column {
+  display: inline-block;
+  white-space: initial;
+  vertical-align: top;
+  min-height: 96vh;
+  border-style: solid;
+  border-color: #B3B3B3;
+  border-width: 2px;
+  margin-left: -2px;
+    background-color: #ECECEC;
+}
+
+.task-column--expanded {
+  width: 185px;
+}
+
+.task-column--collapsed {
+  width: 45px;
+  background-color: #D3D3D3;
+}
+
+.task-column--drag-over {
+  border: 2px dashed red;
+  z-index: 3;
+}
+
+/* ---------------------------------------- */
+.task-column-header {
+  position: sticky;
+  top: 0px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 54px;
+  border-bottom: 4px solid;
+  border-color: #B3B3B3;
+  background-color: #D3D3D3;
+  margin-bottom: 2px;
+}
+
+.task-column-header {
+  border-bottom-color: #636363;
+}
+
+.task-column-header.weekend {
+  border-bottom-color: #f46565;
+}
+
+.task-column-header.backlog {
+  border-bottom-color: #5694d7;
+}
+
+.column-title {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  font-weight: 400;
+  color: #222222;
+}
+
+.add-task-btn-container {
+  position: relative;
+  width: 25%;
+  height: 100%;
+}
+
+.add-task-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 3px;
+  border-color: #B3B3B3;
+  padding: 0px;
+  background-color: #ECECEC;
+}
+
+.add-task-btn > .icon-plus {
+  font-family: sans-serif;
+  font-size: 40px;
+  color: #B3B3B3;
+  margin: -3px auto 0 auto;
+}
+
+/* ---------------------------------------- */
+.task {
+  position: relative;
+  display: inline-block;
+  width: 175px;
+  min-height: 65px;
+  border-radius: 1px;
+  margin: 2px 3px;
+  color: black;
+  border: 1px solid  rgba(0, 0, 0, 0.1);
+}
+
+.task--edit-focus {
+  z-index: 999;
+}
+
+.task--background-color-1 {
+  background-color:white;
+  border: 1px solid  rgba(0, 0, 0, 0.15);
+}
+
+.task--background-color-2 {
+  background-color: #FF9797;
+}
+
+.task--background-color-3 {
+  background-color: #97C9FF;
+}
+
+.task--background-color-4 {
+  background-color: #FFF197;
+}
+
+.task.task--completed {
+  background-color: #D3D3D3;
+  text-decoration: line-through;
+}
+
+.task--completed > div {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.task.task--hidden {
+  /* Visbility: hidden breaks drag and drop in
+  Chrome and Edge, so using opacity: 0 instead. */
+  opacity: 0;
+}
+
+.task-title-container {
+  display: inline-block;
+  /* border: 1px solid; */
+  width: 141px;
+  height: 75%;
+  padding: 5px;
+}
+
+.task-title-container > p {
+  margin: 0;
+  font-size: 0.95em;
+}
+
+.title-textarea {
+  width: 100%;
+  font-size: 0.95em;
+  border: none;
+  font-family: inherit;
+  padding: 0;
+}
+
+.task-controls {
+  display: inline-block;
+  position: absolute;
+  right: 4px;
+  width: 30px;
+  vertical-align: top;
+}
+
+.task-controls > button {
+  border: 1px solid  rgba(255, 255, 255, 0);
+  font-size: 25px;
+  background-color:  rgba(255, 255, 255, 0);
+  color: rgba(0, 0, 0, 0.07);
+  padding: 0;
+  width: 100%;
+  height: 25px;
+}
+
+.task-controls > button:hover {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.task.task-ghost {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* ---------------------------------------- */
+.task-options-panel {
+  position: absolute;
+  /* top: set by OptionsPanel.js */
+  /* left: set by OptionsPanel.js */
+  margin-left: 1px;
+  padding-top: 1px;
+  width: 32px;
+  height: 128px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1px;
+  border: 1px solid #B3B3B3;
+  z-index: 999;
+}
+
+.color-select-div {
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  margin-left: 5px;
+  border: 1px solid  rgba(0, 0, 0, 0.2);
+}
+
+.task-options-panel > button {
+  border: 1px solid  rgba(255, 255, 255, 0);
+  font-size: 20px;
+  background-color:  rgba(255, 255, 255, 0);
+  color: rgba(0, 0, 0, 0.4);
+  padding: 0;
+  width: 100%;
+  height: 20px;
+}
+
+.task-options-panel > button:hover {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* ---------------------------------------- */
+.backdrop {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* width: set by Backdrop.js */
+  /* height: set by Backdrop.js */
+  z-index: 998;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+
